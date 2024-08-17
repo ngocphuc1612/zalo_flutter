@@ -1,18 +1,24 @@
-group 'com.tiendung01023.zalo_flutter'
-version '1.0-SNAPSHOT'
-
 buildscript {
-    ext.kotlin_version = '1.5.20'
+    ext.kotlin_version = '1.9.0'
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:8.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
+
+plugins {
+    id 'kotlin-android'
+}
+
+apply plugin: 'com.android.library'
+
+group 'com.tiendung01023.zalo_flutter'
+version '1.0-SNAPSHOT'
 
 rootProject.allprojects {
     repositories {
@@ -22,16 +28,28 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    namespace 'com.tiendung01023.zalo_flutter'
+    compileSdk 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
     defaultConfig {
-        minSdkVersion 21
+        // minSdkVersion is determined by Native View.
+        minSdkVersion 24
+        targetSdkVersion 34
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
