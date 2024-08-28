@@ -1,6 +1,10 @@
 buildscript {
     ext.kotlin_version = '1.9.0'
     repositories {
+        maven {
+            url "https://gitlab.com/api/v4/projects/50747855/packages/maven"
+            name "GitLabZaloSDK"
+        }
         google()
         jcenter()
     }
@@ -19,6 +23,10 @@ version '1.0-SNAPSHOT'
 
 rootProject.allprojects {
     repositories {
+        maven {
+            url "https://gitlab.com/api/v4/projects/50747855/packages/maven"
+            name "GitLabZaloSDK"
+        }
         google()
         jcenter()
     }
@@ -47,7 +55,7 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "me.zalo:sdk-core:4.2.0724"
-    api "me.zalo:sdk-auth:4.2.0724"
-    api "me.zalo:sdk-openapi:4.2.0724"
+    api "me.zalo:sdk-core:4.24.0301"
+    api "me.zalo:sdk-auth:4.24.0301"
+    api "me.zalo:sdk-openapi:4.24.0301"
 }
